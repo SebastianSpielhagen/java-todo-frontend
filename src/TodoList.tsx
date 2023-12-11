@@ -45,14 +45,13 @@ export const TodoList = () => {
 
     return (
         <div>
-            <h1>Todo-Liste</h1>
             <h3>Aufgabe</h3>
             <input type="text" value={description} onChange={(e) => setDescription(e.target.value)} />
             <button onClick={addTodo}>Erstellen</button>
             <button onClick={deleteAll}>Alle löschen</button>
 
             {todos.map(todo => (
-                <div key={todo.id}>
+                <div key={todo.id} className="todo-item">
                     <span>{todo.description}</span>
                     <span> - Status: {todo.status}</span>
                     <button onClick={() => deleteSingleTodo(todo.id)}>Löschen</button>
