@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { Todo } from './Todo';
-import { getTodos, postTodo, updateTodoStatus, deleteAllTodos } from './api';
+import { getTodos, postTodo, updateTodoStatus, deleteTodo, deleteAllTodos } from './api';
 
 export const TodoList = () => {
     const [todos, setTodos] = useState<Todo[]>([]);
@@ -33,6 +33,11 @@ export const TodoList = () => {
         setTodos(todos.map(t => t.id === todo.id ? savedTodo : t));
     };
 
+    const deleteSingleTodo = async (id: string) => {
+        await deleteTodo(id);
+        setTodos(todos.filter(todo => todo.id !== id));
+    };
+
     const deleteAll = async () => {
         await deleteAllTodos(todos);
         setTodos([]);
@@ -50,8 +55,9 @@ export const TodoList = () => {
                 <div key={todo.id}>
                     <span>{todo.description}</span>
                     <span> - Status: {todo.status}</span>
+                    <button onClick={() => deleteSingleTodo(todo.id)}>Löschen</button>
                     {todo.status === 'OPEN' && (
-                        <button onClick={() => changeStatus('IN_PROGRESS', todo)}>Beginnen</button>
+                        <button onClick={() => changeStatus('IN_PROGRESS', todo)}>Erledigt</button>
                     )}
                     {todo.status === 'IN_PROGRESS' && (
                         <button onClick={() => changeStatus('DONE', todo)}>Erledigt</button>
