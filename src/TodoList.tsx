@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { Todo } from './Todo';
-import { getTodos, postTodo, updateTodoStatus } from './api';
+import { getTodos, postTodo, updateTodoStatus, deleteAllTodos } from './api';
 
 export const TodoList = () => {
     const [todos, setTodos] = useState<Todo[]>([]);
@@ -33,12 +33,18 @@ export const TodoList = () => {
         setTodos(todos.map(t => t.id === todo.id ? savedTodo : t));
     };
 
+    const deleteAll = async () => {
+        await deleteAllTodos(todos);
+        setTodos([]);
+    };
+
     return (
         <div>
             <h1>Todo-Liste</h1>
             <h3>Aufgabe</h3>
             <input type="text" value={description} onChange={(e) => setDescription(e.target.value)} />
             <button onClick={addTodo}>Erstellen</button>
+            <button onClick={deleteAll}>Alle löschen</button>
 
             {todos.map(todo => (
                 <div key={todo.id}>

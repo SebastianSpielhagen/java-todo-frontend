@@ -17,3 +17,13 @@ export const updateTodoStatus = async (todo: Todo) => {
     const response = await axios.put<Todo>('/api/todo/' + todo.id, todo);
     return response.data;
 };
+
+export const deleteTodo = async (id: string) => {
+    await axios.delete('/api/todo/' + id);
+};
+
+export const deleteAllTodos = async (todos: Todo[]) => {
+    for (const todo of todos) {
+        await deleteTodo(todo.id);
+    }
+};
