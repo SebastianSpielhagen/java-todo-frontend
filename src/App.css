@@ -1,51 +1,100 @@
 /* App.css */
 
+body{
+    margin: 0;
+    background-color: black;
+}
+
 .App {
-  text-align: center;
-  font-family: Arial, sans-serif;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 .app-header {
-  height: 150px;
-  color: white;
-  background: linear-gradient(to right, #00ff00, black);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    height: 15vh;
+    background: linear-gradient(to bottom, #00ff00, black);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom-left-radius:100px;
+    border-bottom-right-radius:100px;
+    flex-direction: column;
 }
 
-h1 {
-  font-size: 2em;
+nav {
+    display: flex;
+    gap: 10px;
+    transform: translateY(190px);
+}
+
+.nav-button {
+    background: linear-gradient(to top, #00ff00, black);
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border-bottom-left-radius:10px;
+    border-bottom-right-radius:10px;
+}
+
+.nav-button:hover {
+    background: black;
+    color: #00ff00;
+}
+
+.app-title {
+    font-family:Arial,'DejaVu Sans','Liberation Sans',Freesans,sans-serif;
+    font-size: 6vw;
+    color:#F3FFEA;
+    text-shadow: 5px 5px 5px rgba(183, 0, 184, 1.000);
+    transform: translateY(-35px);
 }
 
 h3 {
-  color: #666;
-  font-size: 1.5em;
+    color: #666;
+    font-size: 1.5em;
 }
 
 button {
-  margin: 5px;
-  padding: 5px 10px;
-  font-size: 16px;
-  cursor: pointer;
+    margin: 5px;
+    padding: 5px 10px;
+    font-size: 16px;
+    cursor: pointer;
 }
 
 input[type="text"] {
-  margin: 20px 0;
-  padding: 10px;
-  font-size: 16px;
+    margin: 20px 0;
+    padding: 10px;
+    font-size: 16px;
 }
 
 .todo-item {
-  background-color: #f9f9f9;
-  border: 1px solid #ddd;
-  padding: 10px;
-  margin: 10px 0;
-  border-radius: 5px;
-  display: flex;
-  justify-content: space-between;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
 }
 
 .todo-item span {
-  margin-right: 10px;
+    margin-right: 10px;
+}
+
+.app-footer {
+    height: 50px;
+    background-color: #f9f9f9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: auto; /* Push footer to the bottom */
 }
